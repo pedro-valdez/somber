@@ -1,5 +1,14 @@
+import Hero from "../components/Hero"
+import CategoryPreview from "../components/CategoryPreview"
+import ProductList from "../components/ProductList"
+
 export default function Home() {
   return (
-    <h1 className="text-9xl font-black">Hello World!</h1>
+    <>
+      <Hero />
+      <CategoryPreview />
+      <ProductList />
+      <ProductList />
+    </>
   )
 }
