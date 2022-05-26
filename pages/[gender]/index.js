@@ -34,17 +34,31 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { gender } = params
 
-  const products = await sanityClient.fetch(`
-    * [_type == "product" 
-    && ( "${gender}" in categories[]->slug.current )] {
-      "id": _id,
-      "name": title,
-      "href": "#",
-      "price": defaultProductVariant.price,
-      "imageSrc": defaultProductVariant.images[0].asset->url,
-      "imageAlt": title,
-    }
-  `)
+  let products
+  if (gender === "all") {
+    products = await sanityClient.fetch(`
+      * [_type == "product"] {
+        "id": _id,
+        "name": title,
+        "href": "#",
+        "price": defaultProductVariant.price,
+        "imageSrc": defaultProductVariant.images[0].asset->url,
+        "imageAlt": title,
+      }
+    `)
+  } else {
+    products = await sanityClient.fetch(`
+      * [_type == "product" 
+      && ( "${gender}" in categories[]->slug.current )] {
+        "id": _id,
+        "name": title,
+        "href": "#",
+        "price": defaultProductVariant.price,
+        "imageSrc": defaultProductVariant.images[0].asset->url,
+        "imageAlt": title,
+      }
+    `)
+  }
 
   return {
     props: {
