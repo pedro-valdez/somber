@@ -18,11 +18,12 @@ export async function getStaticPaths() {
     }
   `)
 
-  const genders = await sanityClient.fetch(`
+  let genders = await sanityClient.fetch(`
     * [_type ==  "category" && "gender" in parents[]->slug.current] {
       "gender": slug.current,
     }
   `)
+  genders.push({ gender: "all" })
 
   const paths = genders
     .map(gender => (wear
@@ -37,19 +38,36 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { gender, wear } = params
-  const products = await sanityClient.fetch(`
-    * [_type == "product" 
-    && ( "${wear}" in categories[]->slug.current
-    || "${wear}" in categories[]->parents[]->slug.current  )
-    && ( "${gender}" in categories[]->slug.current )] {
-      "id": _id,
-      "name": title,
-      "href": "#",
-      "price": defaultProductVariant.price,
-      "imageSrc": defaultProductVariant.images[0].asset->url,
-      "imageAlt": title,
-    }
-  `)
+
+  let products
+  if (gender === "all") {
+    products = await sanityClient.fetch(`
+      * [_type == "product" 
+      && ( "${wear}" in categories[]->slug.current
+      || "${wear}" in categories[]->parents[]->slug.current )] {
+        "id": _id,
+        "name": title,
+        "href": "#",
+        "price": defaultProductVariant.price,
+        "imageSrc": defaultProductVariant.images[0].asset->url,
+        "imageAlt": title,
+      }
+    `)
+  } else {
+    products = await sanityClient.fetch(`
+      * [_type == "product" 
+      && ( "${wear}" in categories[]->slug.current
+      || "${wear}" in categories[]->parents[]->slug.current  )
+      && ( "${gender}" in categories[]->slug.current )] {
+        "id": _id,
+        "name": title,
+        "href": "#",
+        "price": defaultProductVariant.price,
+        "imageSrc": defaultProductVariant.images[0].asset->url,
+        "imageAlt": title,
+      }
+    `)
+  }
 
   return {
     props: {
