@@ -41,8 +41,6 @@ export async function getStaticProps() {
     [0..3]
   `)
 
-  console.log(newest)
-
   return {
     props: {
       popular,
