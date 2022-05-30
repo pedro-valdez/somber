@@ -2,6 +2,7 @@ import Hero from "../../components/Hero"
 import CategoryPreview from "../../components/CategoryPreview"
 import ProductList from "../../components/ProductList"
 import sanityClient from "../../lib/client"
+import FETCHES from "../../lib/fetches"
 
 export default function Home({ products }) {
   return (
@@ -37,24 +38,12 @@ export async function getStaticProps({ params }) {
   let products
   if (gender === "all") {
     products = await sanityClient.fetch(`
-      * [_type == "product"] {
-        "id": _id,
-        "name": title,
-        "price": defaultProductVariant.price,
-        "imageSrc": defaultProductVariant.images[0].asset->url,
-        "imageAlt": title,
-      }
+      * [_type == "product"] ${FETCHES.PRODUCT_PROJECTION}
     `)
   } else {
     products = await sanityClient.fetch(`
       * [_type == "product" 
-      && ( "${gender}" in categories[]->slug.current )] {
-        "id": _id,
-        "name": title,
-        "price": defaultProductVariant.price,
-        "imageSrc": defaultProductVariant.images[0].asset->url,
-        "imageAlt": title,
-      }
+      && ( "${gender}" in categories[]->slug.current )] ${FETCHES.PRODUCT_PROJECTION}
     `)
   }
 
