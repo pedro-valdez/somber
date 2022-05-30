@@ -29,7 +29,7 @@ const products = [
 */
 
 export default function Cart({ products }) {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -153,4 +153,8 @@ export default function Cart({ products }) {
       </Dialog>
     </Transition.Root>
   )
+}
+
+Cart.defaultProps = {
+  products: [],
 }
