@@ -20,7 +20,6 @@ export async function getStaticProps() {
     && "popular" in tags] {
       "id": _id,
       "name": title,
-      "href": "#",
       "price": defaultProductVariant.price,
       "imageSrc": defaultProductVariant.images[0].asset->url,
       "imageAlt": title,
@@ -31,7 +30,6 @@ export async function getStaticProps() {
     * [_type == "product"] {
       "id": _id,
       "name": title,
-      "href": "#",
       "price": defaultProductVariant.price,
       "imageSrc": defaultProductVariant.images[0].asset->url,
       "imageAlt": title,

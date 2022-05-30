@@ -40,7 +40,6 @@ export async function getStaticProps({ params }) {
       * [_type == "product"] {
         "id": _id,
         "name": title,
-        "href": "#",
         "price": defaultProductVariant.price,
         "imageSrc": defaultProductVariant.images[0].asset->url,
         "imageAlt": title,
@@ -52,7 +51,6 @@ export async function getStaticProps({ params }) {
       && ( "${gender}" in categories[]->slug.current )] {
         "id": _id,
         "name": title,
-        "href": "#",
         "price": defaultProductVariant.price,
         "imageSrc": defaultProductVariant.images[0].asset->url,
         "imageAlt": title,
