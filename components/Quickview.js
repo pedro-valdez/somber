@@ -9,10 +9,11 @@ function classNames(...classes) {
 
 export default function Quickview({ open, setOpen, product }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+  console.log(product)
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+      <Dialog as="div" className="relative z-[100]" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -59,7 +60,18 @@ export default function Quickview({ open, setOpen, product }) {
                           Product information
                         </h3>
 
-                        <p className="text-2xl text-gray-900">{product.price}</p>
+                        <p className="text-2xl text-gray-900">${product.price}</p>
+
+                        {/* Reviews */}
+                        <div className="mt-6">
+                          <h4 className="sr-only">Description</h4>
+                          <div className="flex items-center">
+                            <p className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                              {product.blurb}
+                            </p>
+                          </div>
+                        </div>
+
                       </section>
 
                       <section aria-labelledby="options-heading" className="mt-10">
@@ -72,9 +84,6 @@ export default function Quickview({ open, setOpen, product }) {
                           <div className="mt-10">
                             <div className="flex items-center justify-between">
                               <h4 className="text-sm text-gray-900 font-medium">Size</h4>
-                              <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                                Size guide
-                              </a>
                             </div>
 
                             <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
