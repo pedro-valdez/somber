@@ -79,7 +79,9 @@ export default function Quickview({ open, setOpen, product }) {
                           Product options
                         </h3>
 
-                        <form>
+                        <form
+                          onSubmit={(e) => e.preventDefault()}
+                        >
                           {/* Sizes */}
                           <div className="mt-10">
                             <div className="flex items-center justify-between">
