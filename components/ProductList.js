@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Quickview from "./Quickview"
 
-export default function Example({ products }) {
+export default function ProductList({ products }) {
   const [isOpenQuickview, setIsOpenQuickview] = useState(false)
 
   return (
