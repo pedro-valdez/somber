@@ -3,37 +3,11 @@ import { Dialog, RadioGroup, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { StarIcon } from '@heroicons/react/solid'
 
-const product = {
-  name: 'Basic Tee 6-Pack ',
-  price: '$192',
-  rating: 3.9,
-  reviewCount: 117,
-  href: '#',
-  imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-quick-preview-02-detail.jpg',
-  imageAlt: 'Two each of gray, white, and black shirts arranged on table.',
-  colors: [
-    { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-    { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-    { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
-  ],
-  sizes: [
-    { name: 'XXS', inStock: true },
-    { name: 'XS', inStock: true },
-    { name: 'S', inStock: true },
-    { name: 'M', inStock: true },
-    { name: 'L', inStock: true },
-    { name: 'XL', inStock: true },
-    { name: 'XXL', inStock: true },
-    { name: 'XXXL', inStock: false },
-  ],
-}
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Quickview({ open, setOpen }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
+export default function Quickview({ open, setOpen, product }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
   return (
@@ -86,29 +60,6 @@ export default function Quickview({ open, setOpen }) {
                         </h3>
 
                         <p className="text-2xl text-gray-900">{product.price}</p>
-
-                        {/* Reviews */}
-                        <div className="mt-6">
-                          <h4 className="sr-only">Reviews</h4>
-                          <div className="flex items-center">
-                            <div className="flex items-center">
-                              {[0, 1, 2, 3, 4].map((rating) => (
-                                <StarIcon
-                                  key={rating}
-                                  className={classNames(
-                                    product.rating > rating ? 'text-gray-900' : 'text-gray-200',
-                                    'h-5 w-5 flex-shrink-0'
-                                  )}
-                                  aria-hidden="true"
-                                />
-                              ))}
-                            </div>
-                            <p className="sr-only">{product.rating} out of 5 stars</p>
-                            <a href="#" className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                              {product.reviewCount} reviews
-                            </a>
-                          </div>
-                        </div>
                       </section>
 
                       <section aria-labelledby="options-heading" className="mt-10">
@@ -117,42 +68,6 @@ export default function Quickview({ open, setOpen }) {
                         </h3>
 
                         <form>
-                          {/* Colors */}
-                          <div>
-                            <h4 className="text-sm text-gray-900 font-medium">Color</h4>
-
-                            <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
-                              <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
-                              <span className="flex items-center space-x-3">
-                                {product.colors.map((color) => (
-                                  <RadioGroup.Option
-                                    key={color.name}
-                                    value={color}
-                                    className={({ active, checked }) =>
-                                      classNames(
-                                        color.selectedClass,
-                                        active && checked ? 'ring ring-offset-1' : '',
-                                        !active && checked ? 'ring-2' : '',
-                                        '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
-                                      )
-                                    }
-                                  >
-                                    <RadioGroup.Label as="span" className="sr-only">
-                                      {color.name}
-                                    </RadioGroup.Label>
-                                    <span
-                                      aria-hidden="true"
-                                      className={classNames(
-                                        color.class,
-                                        'h-8 w-8 border border-black border-opacity-10 rounded-full'
-                                      )}
-                                    />
-                                  </RadioGroup.Option>
-                                ))}
-                              </span>
-                            </RadioGroup>
-                          </div>
-
                           {/* Sizes */}
                           <div className="mt-10">
                             <div className="flex items-center justify-between">
