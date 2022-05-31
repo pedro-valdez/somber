@@ -14,7 +14,7 @@ function cartReducer(state, action) {
   }
 }
 
-export function CartProvider({ children }) {
+export default function CartProvider({ children }) {
   const [cart, dispatchCart] = useReducer(cartReducer, [])
   const [open, setOpen] = useState(false)
 
