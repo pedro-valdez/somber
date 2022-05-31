@@ -1,10 +1,10 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import { useCartContext } from "./CartContext"
+import { useCartContext, CART_ACTIONS } from "./CartContext"
 
 export default function Cart() {
-  const { isOpenCart, setIsOpenCart, cart: products } = useCartContext()
+  const { isOpenCart, setIsOpenCart, cart: products, dispatchCart } = useCartContext()
 
   return (
     <Transition.Root show={isOpenCart} as={Fragment}>
@@ -77,6 +77,7 @@ export default function Cart() {
                                       <button
                                         type="button"
                                         className="font-medium text-indigo-600 hover:text-indigo-500"
+                                        onClick={() => dispatchCart({ type: CART_ACTIONS.REMOVE, payload: product.id })}
                                       >
                                         Remove
                                       </button>
