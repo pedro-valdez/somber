@@ -1,10 +1,8 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useReducer, useContext, createContext } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 
 export default function Cart({ products }) {
-  const [open, setOpen] = useState(false)
-
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-[100]" onClose={setOpen}>
