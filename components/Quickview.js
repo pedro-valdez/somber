@@ -9,7 +9,6 @@ function classNames(...classes) {
 
 export default function Quickview({ open, setOpen, product }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
-  console.log(product)
 
   return (
     <Transition.Root show={open} as={Fragment}>
