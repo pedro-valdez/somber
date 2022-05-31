@@ -24,7 +24,6 @@ export async function getStaticPaths() {
       "gender": slug.current,
     }
   `)
-  genders.push({ gender: "all" })
 
   const paths = genders
     .map(gender => (wear

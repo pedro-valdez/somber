@@ -23,8 +23,6 @@ export async function getStaticPaths() {
 
   paths = paths
     .map(path => ({ params: path }))
-  paths.push({ params: { gender: "all" } })
-    
 
   return {
     paths,
