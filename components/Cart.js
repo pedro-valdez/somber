@@ -67,7 +67,7 @@ export default function Cart() {
                                   <div>
                                     <div className="flex justify-between text-base font-medium text-gray-900">
                                       <h3>{product.name}</h3>
-                                      <p className="ml-4">${product.price}</p>
+                                      <p className="ml-4">${product.price * product.quantity}</p>
                                     </div>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
@@ -94,7 +94,7 @@ export default function Cart() {
                     <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>${products.reduce((p, c) => p + c.price, 0)}</p>
+                        <p>${products.reduce((p, c) => p + c.price * c.quantity, 0)}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
