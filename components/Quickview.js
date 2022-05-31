@@ -9,6 +9,7 @@ function classNames(...classes) {
 
 export default function Quickview({ open, setOpen, product }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+  const [quantity, setQuantity] = useState(1)
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -71,6 +72,12 @@ export default function Quickview({ open, setOpen, product }) {
                           </div>
                         </div>
 
+                        {/* Quantity */}
+                        <div>
+                          <button onClick={() => setQuantity(quantity - 1)}>-</button>
+                          {quantity}
+                          <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                        </div>
                       </section>
 
                       <section aria-labelledby="options-heading" className="mt-10">
