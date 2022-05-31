@@ -5,13 +5,11 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <CartProvider>
-        <Navbar />
-        <Cart />
-      </CartProvider>
+    <CartProvider>
+      <Navbar />
+      <Cart />
       <Component {...pageProps} />
-    </>
+    </CartProvider>
   )
 }
 

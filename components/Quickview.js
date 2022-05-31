@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react'
+import { useCartContext, CART_ACTIONS } from "./CartContext"
 import { Dialog, RadioGroup, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { StarIcon } from '@heroicons/react/solid'
@@ -10,6 +11,7 @@ function classNames(...classes) {
 export default function Quickview({ open, setOpen, product }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
   const [quantity, setQuantity] = useState(1)
+  const { dispatchCart } = useCartContext()
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -150,6 +152,7 @@ export default function Quickview({ open, setOpen, product }) {
                           <button
                             type="submit"
                             className="mt-6 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            onClick={(e) => dispatchCart({ type: CART_ACTIONS.ADD, payload: { ...product, quantity, selectedSize: selectedSize.name }})}
                           >
                             Add to bag
                           </button>

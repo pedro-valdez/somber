@@ -23,7 +23,7 @@ export default function CartProvider({ children }) {
   return (
     <CartContext.Provider
       value={{
-        dispatchCart,
+        cart, dispatchCart,
         isOpenCart, setIsOpenCart,
       }}
     >

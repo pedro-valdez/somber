@@ -3,8 +3,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { useCartContext } from "./CartContext"
 
-export default function Cart({ products }) {
-  const { isOpenCart, setIsOpenCart } = useCartContext()
+export default function Cart() {
+  const { isOpenCart, setIsOpenCart, cart: products } = useCartContext()
 
   return (
     <Transition.Root show={isOpenCart} as={Fragment}>
@@ -126,8 +126,4 @@ export default function Cart({ products }) {
       </Dialog>
     </Transition.Root>
   )
-}
-
-Cart.defaultProps = {
-  products: [],
 }
