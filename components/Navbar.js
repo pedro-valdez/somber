@@ -132,7 +132,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { setOpen: setCartOpen } = useCartContext()
+  const { setIsOpenCart } = useCartContext()
 
   return (
     <div className="bg-white sticky top-0 left-0 w-full z-50">
@@ -441,7 +441,7 @@ export default function Navbar() {
                   <button
                     href="#"
                     className="group -m-2 p-2 flex items-center text-left"
-                    onClick={() => setCartOpen(true)}
+                    onClick={() => setIsOpenCart(true)}
                   >
                     <ShoppingBagIcon
                       className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"

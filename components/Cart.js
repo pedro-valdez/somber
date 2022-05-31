@@ -4,11 +4,11 @@ import { XIcon } from '@heroicons/react/outline'
 import { useCartContext } from "./CartContext"
 
 export default function Cart({ products }) {
-  const { open, setOpen } = useCartContext()
+  const { isOpenCart, setIsOpenCart } = useCartContext()
 
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-[100]" onClose={setOpen}>
+    <Transition.Root show={isOpenCart} as={Fragment}>
+      <Dialog as="div" className="relative z-[100]" onClose={setIsOpenCart}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -42,7 +42,7 @@ export default function Cart({ products }) {
                           <button
                             type="button"
                             className="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                            onClick={() => setOpen(false)}
+                            onClick={() => setIsOpenCart(false)}
                           >
                             <span className="sr-only">Close panel</span>
                             <XIcon className="h-6 w-6" aria-hidden="true" />
@@ -110,7 +110,7 @@ export default function Cart({ products }) {
                           <button
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
-                            onClick={() => setOpen(false)}
+                            onClick={() => setIsOpenCart(false)}
                           >
                             Continue Shopping<span aria-hidden="true"> &rarr;</span>
                           </button>

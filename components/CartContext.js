@@ -18,13 +18,13 @@ function cartReducer(state, action) {
 
 export default function CartProvider({ children }) {
   const [cart, dispatchCart] = useReducer(cartReducer, [])
-  const [open, setOpen] = useState(false)
+  const [isOpenCart, setIsOpenCart] = useState(false)
 
   return (
     <CartContext.Provider
       value={{
         dispatchCart,
-        open, setOpen,
+        isOpenCart, setIsOpenCart,
       }}
     >
       {children}
