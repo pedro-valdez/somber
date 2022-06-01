@@ -1,11 +1,11 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import { useCartContext, CART_ACTIONS } from "./CartContext"
+import { useGlobalContext, CART_ACTIONS } from "./GlobalContext"
 import { currency } from "../lib/utilities"
 
 export default function Cart() {
-  const { isOpenCart, setIsOpenCart, cart: products, dispatchCart } = useCartContext()
+  const { isOpenCart, setIsOpenCart, cart: products, dispatchCart } = useGlobalContext()
 
   return (
     <Transition.Root show={isOpenCart} as={Fragment}>

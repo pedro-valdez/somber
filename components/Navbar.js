@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import { useCartContext } from "./CartContext"
+import { useGlobalContext } from "./GlobalContext"
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
 
@@ -176,7 +176,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { setIsOpenCart, cart } = useCartContext()
+  const { setIsOpenCart, cart } = useGlobalContext()
 
   return (
     <div className="bg-white sticky top-0 left-0 w-full z-50">

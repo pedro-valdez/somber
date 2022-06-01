@@ -5,7 +5,7 @@ export const CART_ACTIONS = {
   REMOVE: 'remove',
 }
 
-export const CartContext = createContext()
+export const GlobalContext = createContext()
 
 function cartReducer(state, action) {
   switch(action.type) {
@@ -35,22 +35,22 @@ function cartReducer(state, action) {
   }
 }
 
-export default function CartProvider({ children }) {
+export default function GlobalProvider({ children }) {
   const [cart, dispatchCart] = useReducer(cartReducer, [])
   const [isOpenCart, setIsOpenCart] = useState(false)
 
   return (
-    <CartContext.Provider
+    <GlobalContext.Provider
       value={{
         cart, dispatchCart,
         isOpenCart, setIsOpenCart,
       }}
     >
       {children}
-    </CartContext.Provider>
+    </GlobalContext.Provider>
   )
 }
 
-export function useCartContext () {
-  return useContext(CartContext)
+export function useGlobalContext () {
+  return useContext(GlobalContext)
 }

@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import { useCartContext, CART_ACTIONS } from "./CartContext"
+import { useGlobalContext, CART_ACTIONS } from "./GlobalContext"
 import { Dialog, RadioGroup, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { StarIcon } from '@heroicons/react/solid'
@@ -11,7 +11,7 @@ function classNames(...classes) {
 export default function Quickview({ open, setOpen, product }) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
   const [quantity, setQuantity] = useState(1)
-  const { dispatchCart } = useCartContext()
+  const { dispatchCart } = useGlobalContext()
 
   return (
     <Transition.Root show={open} as={Fragment}>
