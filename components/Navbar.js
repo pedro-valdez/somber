@@ -18,26 +18,68 @@ import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/o
     { name: 'Company', href: '#' },
     { name: 'Stores', href: '#' },
   ],
-  featured: [
-    {
-      name: 'New Arrivals',
-      href: '#',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-      imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-    },
-    {
-      name: 'Basic Tees',
-      href: '#',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-      imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-    },
-  ],
 */
+
 const navigation = {
   pages: [],
   categories: [
   {
-    "featured": [],
+    "featured": [
+      {
+        "_createdAt": "2022-04-26T02:00:04Z",
+        "blurb": "Look scorching in bright red.",
+        "id": "1d916720-b0cf-4775-9e29-3907a909ea44",
+        "imageAlt": "Technical Hexagon Jacket",
+        "imageSrc": "https://cdn.sanity.io/images/n8a5172y/production/adcb05a67779d985bcbe752de20e15df898402f6-640x960.jpg",
+        "name": "Technical Hexagon Jacket",
+        "price": 79.99,
+        "sizes": [
+          {
+            "inStock": true,
+            "name": "XS"
+          },
+          {
+            "inStock": true,
+            "name": "S"
+          },
+          {
+            "inStock": true,
+            "name": "L"
+          },
+          {
+            "inStock": true,
+            "name": "XL"
+          }
+        ]
+      },
+      {
+        "_createdAt": "2022-04-22T04:10:58Z",
+        "blurb": "Go! Go! Go!",
+        "id": "2c272b0c-2ce1-43f7-be1a-089d522fb8b9",
+        "imageAlt": "Misguided Neon Green Shirt",
+        "imageSrc": "https://cdn.sanity.io/images/n8a5172y/production/1fb558e74af0d820746be24be05ed9da82118440-640x960.jpg",
+        "name": "Misguided Neon Green Shirt",
+        "price": 24.99,
+        "sizes": [
+          {
+            "inStock": true,
+            "name": "XS"
+          },
+          {
+            "inStock": true,
+            "name": "S"
+          },
+          {
+            "inStock": true,
+            "name": "L"
+          },
+          {
+            "inStock": true,
+            "name": "XL"
+          }
+        ]
+      }
+    ],
     "href": "/women",
     "id": "31d44a38-793c-4c3f-97f6-1044e277ae02",
     "name": "Women",
@@ -60,6 +102,104 @@ const navigation = {
           },
           {
             "href": "/women/pants",
+            "name": "Pants"
+          }
+        ],
+        "name": "Clothing"
+      },
+      {
+        "href": "/accessories",
+        "id": "5acc6ee1-da29-4990-a173-3e98e8260345",
+        "items": [],
+        "name": "Accessories"
+      },
+      {
+        "href": "/shoes",
+        "id": "d1221cce-6d49-47e6-b826-0e8ae678007c",
+        "items": [],
+        "name": "Shoes"
+      }
+    ]
+  },
+  {
+    "featured": [
+      {
+        "_createdAt": "2022-04-22T03:53:13Z",
+        "blurb": "Boo!",
+        "id": "088e0ffc-0c46-46eb-a55b-28a27befdfc5",
+        "imageAlt": "Yikes Hoodie",
+        "imageSrc": "https://cdn.sanity.io/images/n8a5172y/production/b587e069151ef735d240185ee42d42fd58721c8e-640x960.jpg",
+        "name": "Yikes Hoodie",
+        "price": 29.99,
+        "sizes": [
+          {
+            "inStock": true,
+            "name": "XS"
+          },
+          {
+            "inStock": true,
+            "name": "S"
+          },
+          {
+            "inStock": true,
+            "name": "L"
+          },
+          {
+            "inStock": true,
+            "name": "XL"
+          }
+        ]
+      },
+      {
+        "_createdAt": "2022-04-22T02:32:31Z",
+        "blurb": "Stay true.",
+        "id": "27e1ddea-e2bd-4cdb-a70a-c99dab1e5ed7",
+        "imageAlt": "Stay True Hoodie",
+        "imageSrc": "https://cdn.sanity.io/images/n8a5172y/production/193280734eaa0d67fb13ac9023de9db6513a0a97-640x960.jpg",
+        "name": "Stay True Hoodie",
+        "price": 24.99,
+        "sizes": [
+          {
+            "inStock": true,
+            "name": "XS"
+          },
+          {
+            "inStock": true,
+            "name": "S"
+          },
+          {
+            "inStock": true,
+            "name": "L"
+          },
+          {
+            "inStock": true,
+            "name": "XL"
+          }
+        ]
+      }
+    ],
+    "href": "/men",
+    "id": "a31cb765-82a5-473b-83f7-1639f08d92cd",
+    "name": "Men",
+    "sections": [
+      {
+        "href": "/clothing",
+        "id": "38cf7f3f-acae-4a29-aae2-7a6c11ed3dfe",
+        "items": [
+          {
+            "href": "/men/jackets-and-others",
+            "name": "Jackets & Others"
+          },
+          {
+            "href": "/men/shirts-and-tops",
+            "name": "Shirts & Tops"
+          },
+          {
+            "href": "/men/sweaters-and-sweatshirts",
+            "name": "Sweaters & Sweatshirts"
+          },
+          {
+            "href": "/men/pants",
             "name": "Pants"
           }
         ],
@@ -122,52 +262,8 @@ const navigation = {
       }
     ]
   },
-  {
-    "featured": [],
-    "href": "/men",
-    "id": "a31cb765-82a5-473b-83f7-1639f08d92cd",
-    "name": "Men",
-    "sections": [
-      {
-        "href": "/clothing",
-        "id": "38cf7f3f-acae-4a29-aae2-7a6c11ed3dfe",
-        "items": [
-          {
-            "href": "/men/jackets-and-others",
-            "name": "Jackets & Others"
-          },
-          {
-            "href": "/men/shirts-and-tops",
-            "name": "Shirts & Tops"
-          },
-          {
-            "href": "/men/sweaters-and-sweatshirts",
-            "name": "Sweaters & Sweatshirts"
-          },
-          {
-            "href": "/men/pants",
-            "name": "Pants"
-          }
-        ],
-        "name": "Clothing"
-      },
-      {
-        "href": "/accessories",
-        "id": "5acc6ee1-da29-4990-a173-3e98e8260345",
-        "items": [],
-        "name": "Accessories"
-      },
-      {
-        "href": "/shoes",
-        "id": "d1221cce-6d49-47e6-b826-0e8ae678007c",
-        "items": [],
-        "name": "Shoes"
-      }
-    ]
-  }
 ],
 }
-
 
 
 function classNames(...classes) {
@@ -176,7 +272,12 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { setIsOpenCart, cart } = useGlobalContext()
+  const {
+    setIsOpenCart,
+    cart,
+    setIsOpenQuickview,
+    setQuickviewProduct
+  } = useGlobalContext()
 
   return (
     <div className="bg-white sticky top-0 left-0 w-full z-50">
@@ -241,18 +342,24 @@ export default function Navbar() {
                       <Tab.Panel key={category.name} className="pt-10 pb-8 px-4 space-y-10">
                         <div className="grid grid-cols-2 gap-x-4">
                           {category.featured.map((item) => (
-                            <div key={item.name} className="group relative text-sm">
+                            <button
+                              onClick={() => {
+                                setIsOpenQuickview(true)
+                                setQuickviewProduct(item)
+                              }}
+                              key={item.name}
+                              className="group relative text-sm text-left">
                               <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
                                 <img src={item.imageSrc} alt={item.imageAlt} className="object-center object-cover" />
                               </div>
-                              <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                              <span className="mt-6 block font-medium text-gray-900">
                                 <span className="absolute z-10 inset-0" aria-hidden="true" />
                                 {item.name}
-                              </a>
+                              </span>
                               <p aria-hidden="true" className="mt-1">
                                 Shop now
                               </p>
-                            </div>
+                            </button>
                           ))}
                         </div>
                         {category.sections.map((section) => (
@@ -387,7 +494,13 @@ export default function Navbar() {
                                   <div className="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
                                     <div className="col-start-2 grid grid-cols-2 gap-x-8">
                                       {category.featured.map((item) => (
-                                        <div key={item.name} className="group relative text-base sm:text-sm">
+                                        <button
+                                          onClick={() => {
+                                            setIsOpenQuickview(true)
+                                            setQuickviewProduct(item)
+                                          }}
+                                          key={item.name}
+                                          className="group relative text-base sm:text-sm text-left">
                                           <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
                                             <img
                                               src={item.imageSrc}
@@ -395,14 +508,14 @@ export default function Navbar() {
                                               className="object-center object-cover"
                                             />
                                           </div>
-                                          <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                                          <span className="mt-6 block font-medium text-gray-900">
                                             <span className="absolute z-10 inset-0" aria-hidden="true" />
                                             {item.name}
-                                          </a>
+                                          </span>
                                           <p aria-hidden="true" className="mt-1">
                                             Shop now
                                           </p>
-                                        </div>
+                                        </button>
                                       ))}
                                     </div>
                                     <div className="row-start-1 grid grid-cols-3 gap-y-10 gap-x-8 text-sm">
