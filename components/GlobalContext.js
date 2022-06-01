@@ -1,4 +1,4 @@
-import { useState, useReducer, createContext, useContext } from "react"
+import { useState, useReducer, createContext, useContext, useEffect } from "react"
 
 export const CART_ACTIONS = {
   ADD: 'add',
@@ -39,11 +39,16 @@ export default function GlobalProvider({ children }) {
   const [cart, dispatchCart] = useReducer(cartReducer, [])
   const [isOpenCart, setIsOpenCart] = useState(false)
 
+  const [isOpenQuickview, setIsOpenQuickview] = useState(false)
+  const [quickviewProduct, setQuickviewProduct] = useState(undefined)
+
   return (
     <GlobalContext.Provider
       value={{
         cart, dispatchCart,
         isOpenCart, setIsOpenCart,
+        isOpenQuickview, setIsOpenQuickview,
+        quickviewProduct, setQuickviewProduct,
       }}
     >
       {children}

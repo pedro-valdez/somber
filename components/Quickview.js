@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { useGlobalContext, CART_ACTIONS } from "./GlobalContext"
 import { Dialog, RadioGroup, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
@@ -8,14 +8,25 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Quickview({ open, setOpen, product }) {
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+export default function Quickview() {
+  const {
+    dispatchCart,
+    isOpenQuickview,
+    setIsOpenQuickview,
+    quickviewProduct,
+  } = useGlobalContext()
+  const [selectedSize, setSelectedSize] = useState("")
   const [quantity, setQuantity] = useState(1)
-  const { dispatchCart } = useGlobalContext()
+
+  useEffect(() => {
+    if(quickviewProduct) {
+      setSelectedSize(quickviewProduct.sizes[0])
+    }
+  }, [quickviewProduct])
 
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-[100]" onClose={setOpen}>
+    <Transition.Root show={isOpenQuickview} as={Fragment}>
+      <Dialog as="div" className="relative z-[100]" onClose={setIsOpenQuickview}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -44,7 +55,7 @@ export default function Quickview({ open, setOpen, product }) {
                   <button
                     type="button"
                     className="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8"
-                    onClick={() => setOpen(false)}
+                    onClick={() => setIsOpenQuickview(false)}
                   >
                     <span className="sr-only">Close</span>
                     <XIcon className="h-6 w-6" aria-hidden="true" />
@@ -52,24 +63,24 @@ export default function Quickview({ open, setOpen, product }) {
 
                   <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
                     <div className="aspect-w-2 aspect-h-3 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
-                      <img src={product.imageSrc} alt={product.imageAlt} className="object-center object-cover" />
+                      <img src={quickviewProduct?.imageSrc} alt={quickviewProduct?.imageAlt} className="object-center object-cover" />
                     </div>
                     <div className="sm:col-span-8 lg:col-span-7">
-                      <h2 className="text-2xl font-extrabold text-gray-900 sm:pr-12">{product.name}</h2>
+                      <h2 className="text-2xl font-extrabold text-gray-900 sm:pr-12">{quickviewProduct?.name}</h2>
 
                       <section aria-labelledby="information-heading" className="mt-2">
                         <h3 id="information-heading" className="sr-only">
                           Product information
                         </h3>
 
-                        <p className="text-2xl text-gray-900">${product.price}</p>
+                        <p className="text-2xl text-gray-900">${quickviewProduct?.price}</p>
 
                         {/* Reviews */}
                         <div className="mt-6">
                           <h4 className="sr-only">Description</h4>
                           <div className="flex items-center">
                             <p className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                              {product.blurb}
+                              {quickviewProduct?.blurb}
                             </p>
                           </div>
                         </div>
@@ -99,7 +110,7 @@ export default function Quickview({ open, setOpen, product }) {
                             <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
                               <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
                               <div className="grid grid-cols-4 gap-4">
-                                {product.sizes.map((size) => (
+                                {quickviewProduct?.sizes.map((size) => (
                                   <RadioGroup.Option
                                     key={size.name}
                                     value={size}
@@ -152,7 +163,7 @@ export default function Quickview({ open, setOpen, product }) {
                           <button
                             type="submit"
                             className="mt-6 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            onClick={(e) => dispatchCart({ type: CART_ACTIONS.ADD, payload: { ...product, quantity, selectedSize: selectedSize.name }})}
+                            onClick={(e) => dispatchCart({ type: CART_ACTIONS.ADD, payload: { ...quickviewProduct, quantity, selectedSize: selectedSize.name }})}
                           >
                             Add to bag
                           </button>
