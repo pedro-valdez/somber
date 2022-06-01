@@ -21,6 +21,7 @@ export default function Quickview() {
   useEffect(() => {
     if(quickviewProduct) {
       setSelectedSize(quickviewProduct.sizes[0])
+      setQuantity(1)
     }
   }, [quickviewProduct])
 
