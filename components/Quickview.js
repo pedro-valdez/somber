@@ -19,7 +19,7 @@ export default function Quickview() {
   const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
-    if(quickviewProduct) {
+    if(quickviewProduct?.sizes) {
       setSelectedSize(quickviewProduct.sizes[0])
       setQuantity(1)
     }
@@ -111,7 +111,7 @@ export default function Quickview() {
                             <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
                               <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
                               <div className="grid grid-cols-4 gap-4">
-                                {quickviewProduct?.sizes.map((size) => (
+                                {quickviewProduct?.sizes?.map((size) => (
                                   <RadioGroup.Option
                                     key={size.name}
                                     value={size}
