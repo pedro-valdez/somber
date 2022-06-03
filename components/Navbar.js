@@ -379,9 +379,11 @@ export default function Navbar() {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a href={item.href} className="-m-2 p-2 block text-gray-500">
-                                    {item.name}
-                                  </a>
+                                  <Link href={item.href}>
+                                    <a className="-m-2 p-2 block text-gray-500">
+                                      {item.name}
+                                    </a>
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
@@ -395,36 +397,38 @@ export default function Navbar() {
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a href={page.href} className="-m-2 p-2 block font-medium text-gray-900">
-                        {page.name}
-                      </a>
+                      <Link href={page.href}>
+                        <a className="-m-2 p-2 block font-medium text-gray-900">
+                          {page.name}
+                        </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
 
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   <div className="flow-root">
-                    <a href="#" className="-m-2 p-2 block font-medium text-gray-900">
-                      Sign in
-                    </a>
+                    <Link href="/login">
+                      <a className="-m-2 p-2 block font-medium text-gray-900">
+                        Sign in
+                      </a>
+                    </Link>
                   </div>
                   <div className="flow-root">
-                    <a href="#" className="-m-2 p-2 block font-medium text-gray-900">
-                      Create account
-                    </a>
+                    <Link href="sign-up">
+                      <a className="-m-2 p-2 block font-medium text-gray-900">
+                        Create account
+                      </a>
+                    </Link>
                   </div>
                 </div>
 
                 <div className="border-t border-gray-200 py-6 px-4">
-                  <a href="#" className="-m-2 p-2 flex items-center">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="w-5 h-auto block flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
+                  <span className="-m-2 p-2 flex items-center">
+                    <span className="w-5 block flex-shrink-0">🇺🇸</span>
+                    <span className="ml-3 block text-base font-medium text-gray-900">USA</span>
                     <span className="sr-only">, change currency</span>
-                  </a>
+                  </span>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -451,14 +455,16 @@ export default function Navbar() {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
-                  <span className="sr-only">Workflow</span>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                    alt=""
-                  />
-                </a>
+                <Link href="/">
+                  <a>
+                    <span className="sr-only">Workflow</span>
+                    <img
+                      className="h-8 w-auto"
+                      src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+                      alt=""
+                    />
+                  </a>
+                </Link>
               </div>
 
               {/* Flyout menus */}
@@ -545,9 +551,11 @@ export default function Navbar() {
                                           >
                                             {section.items.map((item) => (
                                               <li key={item.name} className="flex">
-                                                <a href={item.href} className="hover:text-gray-800">
-                                                  {item.name}
-                                                </a>
+                                                <Link href={item.href}>
+                                                  <a className="hover:text-gray-800">
+                                                    {item.name}
+                                                  </a>
+                                                </Link>
                                               </li>
                                             ))}
                                           </ul>
@@ -565,47 +573,51 @@ export default function Navbar() {
                   ))}
 
                   {navigation.pages.map((page) => (
-                    <a
+                    <Link
                       key={page.name}
                       href={page.href}
-                      className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
-                      {page.name}
-                    </a>
+                      <a
+                        className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                      >
+                        {page.name}
+                      </a>
+                    </Link>
                   ))}
                 </div>
               </Popover.Group>
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
-                  </a>
+                  <Link href="/login">
+                    <a className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                      Sign in
+                    </a>
+                  </Link>
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Create account
-                  </a>
+                  <Link href="/sign-up">
+                    <a className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                      Create account
+                    </a>
+                  </Link>
                 </div>
 
                 <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="text-gray-700 hover:text-gray-800 flex items-center">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="w-5 h-auto block flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
+                  <span className="text-gray-700 hover:text-gray-800 flex items-center">
+                    <span className="w-5 block flex-shrink-0">🇺🇸</span>
+                    <span className="ml-3 block text-sm font-medium">USA</span>
                     <span className="sr-only">, change currency</span>
-                  </a>
+                  </span>
                 </div>
 
-                {/* Search */}
+                {/* Search
                 <div className="flex lg:ml-6">
                   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
                     <SearchIcon className="w-6 h-6" aria-hidden="true" />
                   </a>
                 </div>
+                */}
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
