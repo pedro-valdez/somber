@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react'
 import { useGlobalContext } from "./GlobalContext"
+import Link from "next/link"
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { MenuIcon, SearchIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
 
@@ -85,7 +86,7 @@ const navigation = {
     "name": "Women",
     "sections": [
       {
-        "href": "/clothing",
+        "href": "/women/clothing",
         "id": "38cf7f3f-acae-4a29-aae2-7a6c11ed3dfe",
         "items": [
           {
@@ -108,13 +109,13 @@ const navigation = {
         "name": "Clothing"
       },
       {
-        "href": "/accessories",
+        "href": "/women/accessories",
         "id": "5acc6ee1-da29-4990-a173-3e98e8260345",
         "items": [],
         "name": "Accessories"
       },
       {
-        "href": "/shoes",
+        "href": "/women/shoes",
         "id": "d1221cce-6d49-47e6-b826-0e8ae678007c",
         "items": [],
         "name": "Shoes"
@@ -183,7 +184,7 @@ const navigation = {
     "name": "Men",
     "sections": [
       {
-        "href": "/clothing",
+        "href": "/men/clothing",
         "id": "38cf7f3f-acae-4a29-aae2-7a6c11ed3dfe",
         "items": [
           {
@@ -206,13 +207,13 @@ const navigation = {
         "name": "Clothing"
       },
       {
-        "href": "/accessories",
+        "href": "/men/accessories",
         "id": "5acc6ee1-da29-4990-a173-3e98e8260345",
         "items": [],
         "name": "Accessories"
       },
       {
-        "href": "/shoes",
+        "href": "/men/shoes",
         "id": "d1221cce-6d49-47e6-b826-0e8ae678007c",
         "items": [],
         "name": "Shoes"
@@ -226,7 +227,7 @@ const navigation = {
     "name": "All",
     "sections": [
       {
-        "href": "/clothing",
+        "href": "/all/clothing",
         "id": "38cf7f3f-acae-4a29-aae2-7a6c11ed3dfe",
         "items": [
           {
@@ -249,13 +250,13 @@ const navigation = {
         "name": "Clothing"
       },
       {
-        "href": "/accessories",
+        "href": "/all/accessories",
         "id": "5acc6ee1-da29-4990-a173-3e98e8260345",
         "items": [],
         "name": "Accessories"
       },
       {
-        "href": "/shoes",
+        "href": "/all/shoes",
         "id": "d1221cce-6d49-47e6-b826-0e8ae678007c",
         "items": [],
         "name": "Shoes"
@@ -365,7 +366,9 @@ export default function Navbar() {
                         {category.sections.map((section) => (
                           <div key={section.name}>
                             <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-gray-900">
-                              {section.name}
+                              <Link href={section.href}>
+                                {section.name}
+                              </Link>
                             </p>
                             <ul
                               role="list"
@@ -522,7 +525,9 @@ export default function Navbar() {
                                       {category.sections.map((section) => (
                                         <div key={section.name}>
                                           <p id={`${section.name}-heading`} className="font-medium text-gray-900">
-                                            {section.name}
+                                            <Link href={section.href}>
+                                              {section.name}
+                                            </Link>
                                           </p>
                                           <ul
                                             role="list"
