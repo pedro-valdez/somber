@@ -1,8 +1,9 @@
-import { useState, useReducer, createContext, useContext, useEffect } from "react"
+import { useState, useReducer, createContext, useContext, useEffect, useLayoutEffect } from "react"
 
 export const CART_ACTIONS = {
   ADD: 'add',
   REMOVE: 'remove',
+  INITIALIZE: 'initialize',
 }
 
 export const GlobalContext = createContext()
@@ -25,10 +26,12 @@ function cartReducer(state, action) {
       }
 
       return [...state, newProduct]
-      break
 
     case CART_ACTIONS.REMOVE:
       return state.filter(product => product.id !== action.payload)
+
+    case CART_ACTIONS.INITIALIZE:
+      return action.payload
 
     default:
       return state
@@ -41,6 +44,17 @@ export default function GlobalProvider({ children }) {
 
   const [isOpenQuickview, setIsOpenQuickview] = useState(false)
   const [quickviewProduct, setQuickviewProduct] = useState(undefined)
+
+  useLayoutEffect(() => {
+    const storage = JSON.parse(sessionStorage.getItem('cart'))
+    if (storage) {
+      dispatchCart({ type: CART_ACTIONS.INITIALIZE, payload: storage })
+    }
+  }, [])
+
+  useEffect(() => {
+    sessionStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   return (
     <GlobalContext.Provider
