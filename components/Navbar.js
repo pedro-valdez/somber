@@ -333,7 +333,9 @@ export default function Navbar() {
                             )
                           }
                         >
-                          {category.name}
+                          <Link href={category.href}>
+                            {category.name}
+                          </Link>
                         </Tab>
                       ))}
                     </Tab.List>
@@ -494,7 +496,14 @@ export default function Navbar() {
 
                               <div className="relative bg-white">
                                 <div className="max-w-7xl mx-auto px-8">
-                                  <div className="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
+                                  <div className="h-16 flex items-center">
+                                    <p>
+                                      <Link href={category.href}>
+                                        {category.name}
+                                      </Link>
+                                    </p>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-y-10 gap-x-8 pb-16">
                                     <div className="col-start-2 grid grid-cols-2 gap-x-8">
                                       {category.featured.map((item) => (
                                         <button
