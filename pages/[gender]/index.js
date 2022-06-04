@@ -7,7 +7,6 @@ import FETCHES from "../../lib/fetches"
 export default function Home({ products }) {
   return (
     <>
-      <Hero />
       <CategoryPreview />
       <ProductList products={products} />
     </>
