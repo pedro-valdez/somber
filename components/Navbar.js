@@ -333,9 +333,7 @@ export default function Navbar() {
                             )
                           }
                         >
-                          <Link href={category.href}>
                             {category.name}
-                          </Link>
                         </Tab>
                       ))}
                     </Tab.List>
@@ -365,6 +363,11 @@ export default function Navbar() {
                             </button>
                           ))}
                         </div>
+                        <Link href={category.href}>
+                          <a className="block font-medium text-gray-900">
+                            {category.name}
+                          </a>
+                        </Link>
                         {category.sections.map((section) => (
                           <div key={section.name}>
                             <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-gray-900">
