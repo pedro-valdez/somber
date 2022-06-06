@@ -2,10 +2,10 @@ import ProductList from "../../components/ProductList"
 import sanityClient from "../../lib/client"
 import FETCHES from "../../lib/fetches"
 
-export default function Wear({ products }) {
+export default function Wear({ products, gender, wear }) {
   return (
     <>
-      <ProductList products={products}/>
+      <ProductList title={gender + " / " + wear} products={products}/>
     </>
   )
 }
@@ -58,6 +58,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       products,
+      gender,
+      wear,
     },
   }
 }

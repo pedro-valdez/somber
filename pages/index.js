@@ -9,8 +9,8 @@ export default function Home({ popular, newest }) {
     <>
       <Hero />
       <CategoryPreview />
-      <ProductList products={popular} />
-      <ProductList products={newest} />
+      <ProductList title="popular" products={popular} />
+      <ProductList title="newest" products={newest} />
     </>
   )
 }

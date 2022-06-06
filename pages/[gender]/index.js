@@ -4,11 +4,11 @@ import ProductList from "../../components/ProductList"
 import sanityClient from "../../lib/client"
 import FETCHES from "../../lib/fetches"
 
-export default function Home({ products }) {
+export default function Home({ products, gender }) {
   return (
     <>
       <CategoryPreview />
-      <ProductList products={products} />
+      <ProductList title={gender} products={products} />
     </>
   )
 }
@@ -47,6 +47,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       products,
+      gender,
     },
   }
 }
