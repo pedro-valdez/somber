@@ -26,6 +26,10 @@ export default function Quickview() {
   }, [quickviewProduct])
 
   return (
+    <>
+      {
+        isOpenQuickview ? (
+          <>
     <Transition.Root show={isOpenQuickview} as={Fragment}>
       <Dialog as="div" className="relative z-[100]" onClose={setIsOpenQuickview}>
         <Transition.Child
@@ -179,6 +183,14 @@ export default function Quickview() {
         </div>
       </Dialog>
     </Transition.Root>
+          </>
+        )
+        : (
+          <>
+          </>
+        )
+      }
+    </>
   )
 }
 
