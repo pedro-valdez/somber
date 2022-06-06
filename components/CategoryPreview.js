@@ -11,7 +11,7 @@ const callouts = [
     description: 'Stay cozy in cold times',
     imageSrc: 'sweater.jpg',
     imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '/all/sweaters-and-shirts',
+    href: '/all/sweaters-and-sweatshirts',
   },
   {
     name: 'Pants',
