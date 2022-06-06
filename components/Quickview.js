@@ -91,14 +91,26 @@ export default function Quickview() {
                         </div>
 
                         {/* Quantity */}
-                        <div>
-                          <button onClick={() => setQuantity(quantity - 1)}>-</button>
+                        <div className="my-10">
+                          <button
+                            className="bg-indigo-600 w-6 h-6 rounded-md mr-2 font-black text-white"
+                            onClick={() => {
+                              if (quantity > 1) {
+                                setQuantity(quantity - 1)
+                              }
+                            }}>
+                            -
+                          </button>
                           {quantity}
-                          <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                          <button
+                            className="bg-indigo-600 w-6 h-6 rounded-md ml-2 font-black text-white"
+                            onClick={() => setQuantity(quantity + 1)}>
+                            +
+                          </button>
                         </div>
                       </section>
 
-                      <section aria-labelledby="options-heading" className="mt-10">
+                      <section aria-labelledby="options-heading" className="">
                         <h3 id="options-heading" className="sr-only">
                           Product options
                         </h3>
@@ -107,7 +119,7 @@ export default function Quickview() {
                           onSubmit={(e) => e.preventDefault()}
                         >
                           {/* Sizes */}
-                          <div className="mt-10">
+                          <div className="">
                             <div className="flex items-center justify-between">
                               <h4 className="text-sm text-gray-900 font-medium">Size</h4>
                             </div>
